@@ -1,0 +1,20 @@
+import{j as M}from"./wrapper-3316f290.js";import{G as _}from"./index.esm-1eb8ea43.js";import{a as w,d as q,E as l,i as K,b as Q,s as Y,v as J,o as W}from"./argTypes-95f67a8a.js";import{E as d,a as m,b as s,I as X}from"./index-69fa7e90.js";import"./index-76fb7be0.js";import"./_commonjsHelpers-de833af9.js";import"./index-6f2f2dd8.js";import"./index-48ba842e.js";import"./index-a431868f.js";const cr={title:"Inputs/IconButton",zeplinLink:"https://zpl.io/p1Q1PEy",parameters:{controls:{sort:"requiredFirst"}},argTypes:{color:w({colors:d,defaultValue:d.PRIMARY,typeName:"EIconButtonColors"}),disabled:q,href:{control:{type:"text"},description:"The URL to link to when the button is clicked",table:{category:l.BEHAVIOR,type:{summary:"string"}}},Icon:K({description:"The icon to display in the button"}),isFetching:Q,size:Y({sizes:m,defaultValue:m.MEDIUM,typeName:"EIconButtonSizes"}),loading:{control:{type:"boolean"},description:"If `true`, the button will be in loading state",table:{category:l.BEHAVIOR,type:{summary:"boolean"}}},variant:J({variants:s,defaultValue:s.CONTAINED,typeName:"EIconButtonVariants"}),onClick:W}},o=j=>M.jsx(X,{...j,Icon:_}),e=o.bind({});e.args={variant:s.DEFAULT};const r=o.bind({});r.args={variant:s.CONTAINED};const a=o.bind({});a.args={variant:s.OUTLINED};const t=o.bind({});t.args={variant:s.LINK};const n=o.bind({});n.args={...r.args,disabled:!0};const c=o.bind({});c.args={...r.args,color:d.ERROR};const i=o.bind({});i.args={...r.args,customColor:"#EB2F96"};const u=o.bind({});u.args={...r.args,loading:!0};const p=o.bind({});p.args={...r.args,isFetching:!0};var g,I,b;e.parameters={...e.parameters,docs:{...(g=e.parameters)==null?void 0:g.docs,source:{originalSource:`args => {
+  return <IconButton {...args} Icon={GoPlus} />;
+}`,...(b=(I=e.parameters)==null?void 0:I.docs)==null?void 0:b.source}}};var E,B,y;r.parameters={...r.parameters,docs:{...(E=r.parameters)==null?void 0:E.docs,source:{originalSource:`args => {
+  return <IconButton {...args} Icon={GoPlus} />;
+}`,...(y=(B=r.parameters)==null?void 0:B.docs)==null?void 0:y.source}}};var f,h,P;a.parameters={...a.parameters,docs:{...(f=a.parameters)==null?void 0:f.docs,source:{originalSource:`args => {
+  return <IconButton {...args} Icon={GoPlus} />;
+}`,...(P=(h=a.parameters)==null?void 0:h.docs)==null?void 0:P.source}}};var C,G,S;t.parameters={...t.parameters,docs:{...(C=t.parameters)==null?void 0:C.docs,source:{originalSource:`args => {
+  return <IconButton {...args} Icon={GoPlus} />;
+}`,...(S=(G=t.parameters)==null?void 0:G.docs)==null?void 0:S.source}}};var x,D,L;n.parameters={...n.parameters,docs:{...(x=n.parameters)==null?void 0:x.docs,source:{originalSource:`args => {
+  return <IconButton {...args} Icon={GoPlus} />;
+}`,...(L=(D=n.parameters)==null?void 0:D.docs)==null?void 0:L.source}}};var N,O,R;c.parameters={...c.parameters,docs:{...(N=c.parameters)==null?void 0:N.docs,source:{originalSource:`args => {
+  return <IconButton {...args} Icon={GoPlus} />;
+}`,...(R=(O=c.parameters)==null?void 0:O.docs)==null?void 0:R.source}}};var v,T,z;i.parameters={...i.parameters,docs:{...(v=i.parameters)==null?void 0:v.docs,source:{originalSource:`args => {
+  return <IconButton {...args} Icon={GoPlus} />;
+}`,...(z=(T=i.parameters)==null?void 0:T.docs)==null?void 0:z.source}}};var F,V,k;u.parameters={...u.parameters,docs:{...(F=u.parameters)==null?void 0:F.docs,source:{originalSource:`args => {
+  return <IconButton {...args} Icon={GoPlus} />;
+}`,...(k=(V=u.parameters)==null?void 0:V.docs)==null?void 0:k.source}}};var A,H,U;p.parameters={...p.parameters,docs:{...(A=p.parameters)==null?void 0:A.docs,source:{originalSource:`args => {
+  return <IconButton {...args} Icon={GoPlus} />;
+}`,...(U=(H=p.parameters)==null?void 0:H.docs)==null?void 0:U.source}}};const ir=["Default","Contained","Outlined","Link","Disabled","Error","ColorHex","Loading","IsFetching"];export{i as ColorHex,r as Contained,e as Default,n as Disabled,c as Error,p as IsFetching,t as Link,u as Loading,a as Outlined,ir as __namedExportsOrder,cr as default};
+//# sourceMappingURL=index.stories-689b73c6.js.map
