@@ -1,0 +1,26 @@
+@import '../../styles/index.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: max-content;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+
+  @include component-regular-16px;
+  color: theme-var(--text-60);
+
+  &:hover {
+    color: theme-var(--primary-60);
+  }
+
+  &.active {
+    color: theme-var(--primary-60);
+  }
+
+  &.isFetching {
+    @include skeleton;
+  }
+}

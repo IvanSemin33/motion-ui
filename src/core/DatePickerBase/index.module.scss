@@ -1,0 +1,340 @@
+@import '../../styles/index.scss';
+
+.container {
+  width: 100%;
+  min-width: fit-content;
+
+  .picker {
+    width: 100%;
+    @include text-regular-14px;
+    border-radius: 4px;
+
+    .label {
+      &Left {
+        padding: 7px 20px;
+        color: theme-var(--text-100);
+        border-radius: 4px 0px 0px 4px;
+        border: 1px solid transparent;
+      }
+
+      &Top {
+        @include text-bold-12px;
+        color: theme-var(--text-60);
+        position: absolute;
+        top: -22px;
+      }
+    }
+
+    .dateInputs {
+      width: 100%;
+      justify-content: space-between;
+      height: 37px;
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      padding-right: 16px;
+
+      svg {
+        flex: 0 0 16px;
+        color: theme-var(--text-40);
+      }
+
+      .iconButton {
+        flex: 0 0 16px;
+        cursor: pointer;
+      }
+
+      .input {
+        flex: 2 1 112px;
+        width: 112px;
+        min-width: 112px;
+        border: 0 !important;
+        outline: 0 !important;
+        padding: 8px 16px;
+        color: theme-var(--text-100);
+        background: transparent;
+        @include text-regular-14px;
+      }
+    }
+
+    &:hover {
+      .dateInputs svg {
+        color: theme-var(--primary-60);
+      }
+    }
+
+    &:has(.labelTop) {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin-top: 22px;
+    }
+
+    &:has(.labelLeft) {
+      display: flex;
+      flex-direction: row;
+
+      .dateInputs {
+        border-left: 0;
+        border-radius: 0px 4px 4px 0px;
+      }
+    }
+  }
+
+  &.standard {
+    .picker {
+      .dateInputs {
+        border-bottom-color: theme-var(--grey-30);
+        border-radius: 0;
+      }
+
+      &:hover {
+        .labelTop {
+          color: theme-var(--primary-60);
+        }
+
+        .dateInputs {
+          border-bottom-color: theme-var(--primary-60);
+        }
+      }
+
+      &:has(.dateInputs .input:focus) {
+        .label {
+          &Left {
+            color: theme-var(--primary-60);
+          }
+
+          &Top {
+            color: theme-var(--primary-60);
+          }
+        }
+
+        .dateInputs {
+          border-bottom-color: theme-var(--primary-60);
+        }
+      }
+    }
+
+    &.disabled {
+      .picker {
+        .label {
+          &Left {
+            color: theme-var(--text-30);
+          }
+
+          &Top {
+            color: theme-var(--text-40);
+          }
+        }
+
+        .dateInputs {
+          border-bottom-color: theme-var(--grey-30);
+
+          .input {
+            color: theme-var(--text-30);
+          }
+        }
+      }
+    }
+  }
+
+  &.outlined {
+    .picker {
+      .label {
+        &Left {
+          background: theme-var(--grey-30);
+        }
+      }
+
+      .dateInputs {
+        border-color: theme-var(--components-borders-20);
+      }
+
+      &:hover {
+        .label {
+          &Left {
+            border-color: theme-var(--primary-60);
+          }
+
+          &Top {
+            color: theme-var(--primary-60);
+          }
+        }
+
+        .dateInputs {
+          border-color: theme-var(--primary-60);
+        }
+      }
+
+      &:has(.dateInputs .input:focus) {
+        box-shadow: 0 0 0 2px theme-var(--primary-20);
+
+        .label {
+          &Left {
+            border-color: theme-var(--primary-60);
+          }
+
+          &Top {
+            color: theme-var(--primary-60);
+          }
+        }
+
+        .dateInputs {
+          border-color: theme-var(--primary-60);
+        }
+      }
+    }
+
+    &.disabled {
+      .picker {
+        .label {
+          &Left {
+            color: theme-var(--text-50);
+            border-color: theme-var(--components-borders-20);
+            border-right-color: theme-var(--components-buttons-contained-secondary-default);
+            background-color: theme-var(--grey-30);
+          }
+
+          &Top {
+            color: theme-var(--text-40);
+          }
+        }
+
+        .dateInputs {
+          border-color: theme-var(--components-buttons-contained-secondary-default);
+
+          .input {
+            color: theme-var(--text-30);
+          }
+        }
+
+        &:hover {
+          .label {
+            &Left {
+              border-color: theme-var(--components-borders-20);
+              border-right-color: theme-var(--components-buttons-contained-secondary-default);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.filled {
+    .picker {
+      background: theme-var(--grey-20);
+
+      .label {
+        &Left {
+          border-right: 1px solid theme-var(--primary-60);
+          background: theme-var(--primary-60);
+          color: var(--common-1);
+        }
+      }
+
+      .dateInputs {
+        .input {
+          background: transparent;
+        }
+      }
+
+      &:hover {
+        .label {
+          &Left {
+            border-color: theme-var(--primary-60);
+          }
+
+          &Top {
+            color: theme-var(--primary-60);
+          }
+        }
+
+        .dateInputs {
+          border-color: theme-var(--primary-60);
+        }
+      }
+
+      &:has(.dateInputs .input:focus) {
+        box-shadow: 0 0 0 2px theme-var(--primary-20);
+
+        .label {
+          &Left {
+            border-color: theme-var(--primary-60);
+          }
+
+          &Top {
+            color: theme-var(--primary-60);
+          }
+        }
+
+        .dateInputs {
+          border-color: theme-var(--primary-60);
+        }
+      }
+    }
+
+    &.disabled {
+      .picker {
+        .label {
+          &Left {
+            color: theme-var(--text-50);
+            border-color: theme-var(--grey-30);
+            background-color: theme-var(--grey-30);
+          }
+
+          &Top {
+            color: theme-var(--text-40);
+          }
+        }
+
+        .dateInputs {
+          .input {
+            color: theme-var(--text-50);
+          }
+        }
+
+        &:hover {
+          border-color: theme-var(--grey-30);
+
+          .label {
+            &Left {
+              border-color: theme-var(--grey-30);
+            }
+          }
+
+          .dateInputs {
+            border-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  &.disabled {
+    .picker {
+      svg {
+        color: theme-var(--text-30);
+      }
+
+      &:hover {
+        cursor: not-allowed;
+
+        svg {
+          color: theme-var(--text-30);
+        }
+      }
+    }
+  }
+
+  &.isFetching {
+    @include skeleton(1px, 4px);
+  }
+}
+
+.calendarWrapper {
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  z-index: 1000;
+}

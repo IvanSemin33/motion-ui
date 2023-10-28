@@ -1,0 +1,875 @@
+@use 'sass:color';
+@import '../../styles/index.scss';
+
+@mixin variant(
+  $bg-color,
+  $color,
+  $bg-color-hover,
+  $bg-color-focus,
+  $bg-color-active,
+  $loading-color,
+  $loading-bg-color,
+  $toggle-bg-color,
+  $toggle-color,
+  $toggle-bg-color-hover,
+  $toggle-color-hover,
+  $toggle-bg-color-selected,
+  $toggle-color-selected
+) {
+  background-color: $bg-color;
+  color: $color;
+
+  svg {
+    fill: $color;
+  }
+
+  &.loading {
+    background-color: $loading-bg-color;
+    color: $loading-color;
+
+    svg {
+      fill: $loading-color;
+    }
+  }
+
+  &:not(.disabled, .isFetching, .loading) {
+    &:hover {
+      background-color: $bg-color-hover;
+    }
+
+    &:focus-visible {
+      background-color: $bg-color-focus;
+    }
+
+    &:active {
+      background-color: $bg-color-active;
+    }
+
+    &.toggleButton {
+      background-color: $toggle-bg-color;
+      color: $toggle-color;
+
+      svg {
+        fill: $toggle-color;
+      }
+
+      &.loading {
+        background-color: $loading-bg-color;
+        color: $loading-color;
+
+        svg {
+          fill: $loading-color;
+        }
+      }
+
+      &:hover {
+        background-color: $toggle-bg-color-hover;
+        color: $toggle-color-hover;
+
+        svg {
+          fill: $toggle-color-hover;
+        }
+      }
+
+      &:focus-visible {
+        background-color: $toggle-bg-color-hover;
+        color: $toggle-color-hover;
+
+        svg {
+          fill: $toggle-color-hover;
+        }
+      }
+
+      &:active {
+        background-color: $toggle-bg-color-hover;
+        color: $toggle-color-hover;
+
+        svg {
+          fill: $toggle-color-hover;
+        }
+      }
+
+      &.selected {
+        background-color: $toggle-bg-color-selected;
+        color: $toggle-color-selected;
+
+        svg {
+          fill: $toggle-color-selected;
+        }
+      }
+    }
+  }
+}
+
+@mixin link($color, $color-hover, $color-focus, $color-active, $loading-color) {
+  color: $color;
+
+  svg {
+    fill: $color;
+  }
+
+  &.loading {
+    color: $loading-color;
+
+    svg {
+      fill: $loading-color;
+    }
+  }
+
+  &:not(.disabled, .isFetching, .loading) {
+    &:hover {
+      color: $color-hover;
+    }
+
+    &:focus-visible {
+      color: $color-focus;
+    }
+
+    &:active {
+      color: $color-active;
+    }
+  }
+
+  &.toggleButton {
+    color: theme-var(--grey-70);
+
+    svg {
+      fill: theme-var(--grey-70);
+    }
+
+    &.loading {
+      color: theme-var(--grey-70);
+
+      svg {
+        fill: theme-var(--grey-70);
+      }
+    }
+
+    &.selected {
+      color: $color;
+
+      svg {
+        fill: $color;
+      }
+    }
+  }
+}
+
+@mixin disabled {
+  @content;
+}
+
+.button {
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  width: fit-content;
+  @include transition-1;
+
+  &:active:not(.isFetching, .disabled, .loading, .toggleButton) {
+    transform: scale(0.96);
+  }
+
+  &.xsmall {
+    padding: 4px 15px;
+    @include component-regular-14px;
+
+    &.toggleButton {
+      padding: 4px 15px;
+    }
+  }
+
+  &.small {
+    padding: 7px 23px;
+    @include component-regular-14px;
+
+    &.toggleButton {
+      padding: 7px 15px;
+    }
+  }
+
+  &.medium {
+    padding: 11px 27px;
+    @include component-regular-14px;
+
+    &.toggleButton {
+      padding: 11px 19px;
+    }
+  }
+
+  &.large {
+    padding: 13px 31px;
+    @include component-regular-16px;
+
+    &.toggleButton {
+      padding: 13px 23px;
+    }
+  }
+
+  &.xlarge {
+    padding: 15px 39px;
+    @include component-regular-16px;
+
+    &.toggleButton {
+      padding: 15px 31px;
+    }
+  }
+
+  &:has(.icon):not(.link) {
+    &.secondary {
+      color: theme-var(--sexy-steel);
+    }
+
+    &.xsmall {
+      padding: 4px;
+
+      &.toggleButton {
+        padding: 4px 15px;
+      }
+    }
+
+    &.small {
+      padding: 7px;
+
+      &.toggleButton {
+        padding: 5px 15px;
+      }
+    }
+
+    &.medium {
+      padding: 11px;
+
+      &.toggleButton {
+        padding: 7px 19px;
+      }
+    }
+
+    &.large {
+      padding: 13px;
+
+      &.toggleButton {
+        padding: 9px 23px;
+      }
+    }
+
+    &.xlarge {
+      padding: 15px;
+
+      &.toggleButton {
+        padding: 11px 31px;
+      }
+    }
+  }
+
+  &:has(.start):not(.link) {
+    &.xsmall {
+      padding-left: 12px;
+    }
+
+    &.small {
+      padding-left: 14px;
+    }
+
+    &.medium {
+      padding-left: 16px;
+    }
+
+    &.large {
+      padding-left: 20px;
+    }
+
+    &.xlarge {
+      padding-left: 28px;
+    }
+  }
+
+  &:has(.end):not(.link) {
+    &.xsmall {
+      padding-right: 12px;
+    }
+
+    &.small {
+      padding-right: 14px;
+    }
+
+    &.medium {
+      padding-right: 16px;
+    }
+
+    &.large {
+      padding-right: 20px;
+    }
+
+    &.xlarge {
+      padding-right: 28px;
+    }
+  }
+
+  &.default {
+    &.primary {
+      @include variant(
+        transparent,
+        theme-var(--text-buttons-primary),
+        theme-var(--components-buttons-text-primary-hover),
+        theme-var(--components-buttons-text-primary-focus),
+        theme-var(--components-buttons-text-primary-active),
+        theme-var(--primary-50),
+        theme-var(--components-buttons-text-primary-hover),
+        // toggle-bg-color
+        transparent,
+        // toggle-color
+        theme-var(--grey-70),
+        // toggle-bg-color-hover
+        transparent,
+        // toggle-color-hover
+        theme-var(--text-buttons-primary),
+        // toggle-bg-color-selected
+        theme-var(--text-buttons-primary),
+        // toggle-color-selected
+        var(--common-1)
+      );
+    }
+
+    &.secondary {
+      @include variant(
+        transparent,
+        theme-var(--sexy-steel),
+        theme-var(--components-buttons-text-secondary-hover),
+        theme-var(--components-buttons-text-secondary-focus),
+        theme-var(--components-buttons-text-secondary-active),
+        theme-var(--text-40),
+        theme-var(--components-buttons-text-secondary-hover),
+        // toggle-bg-color
+        transparent,
+        // toggle-color
+        theme-var(--grey-70),
+        // toggle-bg-color-hover
+        transparent,
+        // toggle-color-hover
+        theme-var(--text-buttons-secondary),
+        // toggle-bg-color-selected
+        theme-var(--text-buttons-secondary),
+        // toggle-color-selected
+        var(--common-1)
+      );
+    }
+
+    &.error {
+      @include variant(
+        transparent,
+        theme-var(--text-buttons-error),
+        theme-var(--components-buttons-text-error-hover),
+        theme-var(--components-buttons-text-error-focus),
+        theme-var(--components-buttons-text-error-active),
+        theme-var(--red-50),
+        theme-var(--components-buttons-text-error-hover),
+        // toggle-bg-color
+        transparent,
+        // toggle-color
+        theme-var(--grey-70),
+        // toggle-bg-color-hover
+        transparent,
+        // toggle-color-hover
+        theme-var(--text-buttons-error),
+        // toggle-bg-color-selected
+        theme-var(--text-buttons-error),
+        // toggle-color-selected
+        var(--common-1)
+      );
+    }
+
+    &.custom {
+      @include theme('light') {
+        @include variant(
+          transparent,
+          var(--custom-color-light-text),
+          var(--custom-color-light-hover),
+          var(--custom-color-light-focus),
+          var(--custom-color-light-active),
+          var(--custom-color-light-loading),
+          var(--custom-color-light-hover),
+          // toggle-bg-color
+          transparent,
+          // toggle-color
+          theme-var(--grey-70),
+          // toggle-bg-color-hover
+          transparent,
+          // toggle-color-hover
+          var(--custom-color-light-text),
+          // toggle-bg-color-selected
+          var(--custom-color-light-text),
+          // toggle-color-selected
+          var(--common-1)
+        );
+      }
+
+      @include theme('dark') {
+        @include variant(
+          transparent,
+          var(--custom-color-dark-text),
+          var(--custom-color-dark-hover),
+          var(--custom-color-dark-focus),
+          var(--custom-color-dark-active),
+          var(--custom-color-dark-loading),
+          var(--custom-color-dark-hover),
+          // toggle-bg-color
+          transparent,
+          // toggle-color
+          theme-var(--grey-70),
+          // toggle-bg-color-hover
+          transparent,
+          // toggle-color-hover
+          var(--custom-color-dark-text),
+          // toggle-bg-color-selected
+          var(--custom-color-dark-text),
+          // toggle-color-selected
+          var(--common-1)
+        );
+      }
+    }
+
+    &.disabled {
+      @include disabled {
+        background-color: transparent;
+        color: theme-var(--text-buttons-disabled);
+      }
+    }
+  }
+
+  &.contained {
+    &.primary {
+      @include variant(
+        theme-var(--components-buttons-contained-primary-default),
+        var(--common-1),
+        theme-var(--components-buttons-contained-primary-hover),
+        theme-var(--components-buttons-contained-primary-hover),
+        theme-var(--components-buttons-contained-primary-active),
+        var(--common-2),
+        var(--common-6),
+        // toggle-bg-color
+        transparent,
+        // toggle-color
+        theme-var(--grey-70),
+        // toggle-bg-color-hover
+        theme-var(--primary-20),
+        // toggle-color-hover
+        var(--primary-60),
+        // toggle-bg-color-selected
+        var(--primary-60),
+        // toggle-color-selected
+        var(--common-1)
+      );
+
+      &:focus-visible {
+        @include shadow-focus-primary;
+      }
+    }
+
+    &.secondary {
+      @include variant(
+        theme-var(--components-buttons-contained-secondary-default),
+        theme-var(--sexy-steel),
+        theme-var(--components-buttons-contained-secondary-hover),
+        theme-var(--components-buttons-contained-secondary-hover),
+        theme-var(--components-buttons-contained-secondary-active),
+        theme-var(--text-60),
+        theme-var(--grey-20),
+        // toggle-bg-color
+        transparent,
+        // toggle-color
+        theme-var(--grey-70),
+        // toggle-bg-color-hover
+        theme-var(--components-buttons-contained-secondary-default),
+        // toggle-color-hover
+        theme-var(--text-100),
+        // toggle-bg-color-selected
+        theme-var(--sexy-off-black),
+        // toggle-color-selected
+        var(--common-1)
+      );
+
+      &:focus-visible {
+        @include shadow-focus-secondary;
+      }
+    }
+
+    &.error {
+      @include variant(
+        theme-var(--components-buttons-contained-error-default),
+        var(--common-1),
+        theme-var(--components-buttons-contained-error-hover),
+        theme-var(--components-buttons-contained-error-hover),
+        theme-var(--components-buttons-contained-error-active),
+        var(--common-20),
+        var(--common-19),
+        // toggle-bg-color
+        transparent,
+        // toggle-color
+        theme-var(--grey-70),
+        // toggle-bg-color-hover
+        theme-var(--red-20),
+        // toggle-color-hover
+        theme-var(--red-60),
+        // toggle-bg-color-selected
+        theme-var(--red-60),
+        // toggle-color-selected
+        var(--common-1)
+      );
+
+      &:focus-visible {
+        @include shadow-focus-error;
+      }
+    }
+
+    &.custom {
+      @include theme('light') {
+        @include variant(
+          var(--custom-color-light-default),
+          var(--custom-color-light-text),
+          var(--custom-color-light-hover),
+          var(--custom-color-light-hover),
+          var(--custom-color-light-active),
+          var(--custom-color-light-text),
+          var(--custom-color-light-loading),
+          // toggle-bg-color
+          transparent,
+          // toggle-color
+          theme-var(--grey-70),
+          // toggle-bg-color-hover
+          theme-var(--components-buttons-contained-secondary-default),
+          // toggle-color-hover
+          var(--custom-color-light-default),
+          // toggle-bg-color-selected
+          var(--custom-color-light-default),
+          // toggle-color-selected
+          var(--custom-color-light-text)
+        );
+      }
+
+      @include theme('dark') {
+        @include variant(
+          var(--custom-color-dark-default),
+          var(--custom-color-dark-text),
+          var(--custom-color-dark-hover),
+          var(--custom-color-dark-hover),
+          var(--custom-color-dark-active),
+          var(--custom-color-dark-text),
+          var(--custom-color-dark-loading),
+          // toggle-bg-color
+          transparent,
+          // toggle-color
+          theme-var(--grey-70),
+          // toggle-bg-color-hover
+          theme-var(--components-buttons-contained-secondary-default),
+          // toggle-color-hover
+          var(--custom-color-dark-default),
+          // toggle-bg-color-selected
+          var(--custom-color-dark-default),
+          // toggle-color-selected
+          var(--custom-color-dark-text)
+        );
+      }
+    }
+
+    &.disabled {
+      @include disabled {
+        background-color: theme-var(--components-buttons-contained-primary-disabled);
+        color: theme-var(--text-buttons-disabled);
+      }
+    }
+  }
+
+  &.outlined {
+    &.primary {
+      @include variant(
+        transparent,
+        theme-var(--components-buttons-outlined-primary-default),
+        theme-var(--components-buttons-outlined-primary-hover),
+        theme-var(--components-buttons-outlined-primary-hover),
+        theme-var(--components-buttons-outlined-primary-active),
+        theme-var(--primary-40),
+        theme-var(--components-buttons-outlined-primary-hover),
+        // toggle-bg-color
+        transparent,
+        // toggle-color
+        theme-var(--text-100),
+        // toggle-bg-color-hover
+        transparent,
+        // toggle-color-hover
+        theme-var(--components-buttons-outlined-primary-default),
+        // toggle-bg-color-selected
+        theme-var(--components-buttons-outlined-primary-default),
+        // toggle-color-selected
+        var(--common-1)
+      );
+
+      border: 1px solid theme-var(--components-buttons-outlined-primary-default);
+
+      &.toggleButton:not(.selected) {
+        border-color: theme-var(--components-borders-20);
+
+        &:hover {
+          border-color: theme-var(--components-buttons-outlined-primary-default);
+        }
+      }
+
+      &.loading {
+        border-color: theme-var(--primary-50);
+      }
+
+      &:focus-visible {
+        @include shadow-focus-primary;
+      }
+    }
+
+    &.secondary {
+      @include variant(
+        transparent,
+        theme-var(--sexy-steel),
+        theme-var(--components-buttons-outlined-secondary-hover),
+        theme-var(--components-buttons-outlined-secondary-hover),
+        theme-var(--components-buttons-outlined-secondary-active),
+        theme-var(--text-40),
+        theme-var(--components-buttons-outlined-secondary-hover),
+        // toggle-bg-color
+        transparent,
+        // toggle-color
+        theme-var(--text-100),
+        // toggle-bg-color-hover
+        transparent,
+        // toggle-color-hover
+        theme-var(--components-buttons-outlined-secondary-default),
+        // toggle-bg-color-selected
+        theme-var(--components-buttons-outlined-secondary-default),
+        // toggle-color-selected
+        var(--common-1)
+      );
+
+      border: 1px solid theme-var(--components-buttons-outlined-secondary-default);
+
+      &.toggleButton:not(.selected) {
+        border-color: theme-var(--components-borders-20);
+
+        &:hover {
+          border-color: theme-var(--components-buttons-outlined-secondary-default);
+        }
+      }
+
+      &.loading {
+        border-color: theme-var(--components-buttons-outlined-secondary-default);
+      }
+
+      &:focus-visible {
+        @include shadow-focus-secondary;
+      }
+    }
+
+    &.error {
+      @include variant(
+        transparent,
+        theme-var(--components-buttons-outlined-error-default),
+        theme-var(--components-buttons-outlined-error-hover),
+        theme-var(--components-buttons-outlined-error-hover),
+        theme-var(--components-buttons-outlined-error-active),
+        theme-var(--red-40),
+        theme-var(--components-buttons-outlined-error-hover),
+        // toggle-bg-color
+        transparent,
+        // toggle-color
+        theme-var(--text-100),
+        // toggle-bg-color-hover
+        transparent,
+        // toggle-color-hover
+        theme-var(--components-buttons-outlined-error-default),
+        // toggle-bg-color-selected
+        theme-var(--components-buttons-outlined-error-default),
+        // toggle-color-selected
+        var(--common-1)
+      );
+
+      border: 1px solid theme-var(--components-buttons-outlined-error-default);
+
+      &.toggleButton:not(.selected) {
+        border-color: theme-var(--components-borders-20);
+
+        &:hover {
+          border-color: theme-var(--components-buttons-outlined-error-default);
+        }
+      }
+
+      &.loading {
+        border-color: theme-var(--red-40);
+      }
+
+      &:focus-visible {
+        @include shadow-focus-error;
+      }
+    }
+
+    &.custom {
+      @include theme('light') {
+        @include variant(
+          transparent,
+          var(--custom-color-light-text),
+          var(--custom-color-light-hover),
+          var(--custom-color-light-hover),
+          var(--custom-color-light-active),
+          var(--custom-color-light-loading),
+          var(--custom-color-light-hover),
+          // toggle-bg-color
+          transparent,
+          // toggle-color
+          theme-var(--text-100),
+          // toggle-bg-color-hover
+          transparent,
+          // toggle-color-hover
+          var(--custom-color-light-default),
+          // toggle-bg-color-selected
+          var(--custom-color-light-default),
+          // toggle-color-selected
+          var(--common-1)
+        );
+
+        border: 1px solid var(--custom-color-light-default);
+
+        &.toggleButton:not(.selected) {
+          border-color: theme-var(--components-borders-20);
+
+          &:hover {
+            border-color: var(--custom-color-light-default);
+          }
+        }
+
+        &.loading {
+          border-color: var(--custom-color-light-loading);
+        }
+      }
+
+      @include theme('dark') {
+        @include variant(
+          transparent,
+          var(--custom-color-dark-text),
+          var(--custom-color-dark-hover),
+          var(--custom-color-dark-hover),
+          var(--custom-color-dark-active),
+          var(--custom-color-dark-loading),
+          var(--custom-color-dark-hover),
+          // toggle-bg-color
+          transparent,
+          // toggle-color
+          theme-var(--text-100),
+          // toggle-bg-color-hover
+          transparent,
+          // toggle-color-hover
+          var(--custom-color-dark-default),
+          // toggle-bg-color-selected
+          var(--custom-color-dark-default),
+          // toggle-color-selected
+          var(--common-1)
+        );
+
+        border: 1px solid var(--custom-color-dark-default);
+
+        &.toggleButton:not(.selected) {
+          border-color: theme-var(--components-borders-20);
+
+          &:hover {
+            border-color: var(--custom-color-dark-default);
+          }
+        }
+
+        &.loading {
+          border-color: var(--custom-color-dark-loading);
+        }
+      }
+    }
+
+    &.disabled {
+      @include disabled {
+        background-color: transparent;
+        border-color: theme-var(--components-buttons-outlined-primary-disabled);
+        color: theme-var(--text-buttons-disabled);
+      }
+    }
+  }
+
+  &.link {
+    padding: 0;
+    background-color: transparent;
+
+    &.primary {
+      @include link(
+        theme-var(--components-buttons-link-primary-default),
+        theme-var(--components-buttons-link-primary-hover),
+        theme-var(--components-buttons-link-primary-active),
+        theme-var(--components-buttons-link-primary-focus),
+        theme-var(--components-buttons-link-primary-hover)
+      );
+    }
+
+    &.secondary {
+      @include link(
+        theme-var(--sexy-steel),
+        theme-var(--components-buttons-link-secondary-hover),
+        theme-var(--components-buttons-link-secondary-active),
+        theme-var(--components-buttons-link-secondary-focus),
+        theme-var(--components-buttons-link-secondary-hover)
+      );
+    }
+
+    &.error {
+      @include link(
+        theme-var(--components-buttons-link-error-default),
+        theme-var(--components-buttons-link-error-hover),
+        theme-var(--components-buttons-link-error-active),
+        theme-var(--components-buttons-link-error-focus),
+        theme-var(--components-buttons-link-error-hover)
+      );
+    }
+
+    &.custom {
+      @include theme('light') {
+        @include link(
+          var(--custom-color-light-text),
+          var(--custom-color-light-hover),
+          var(--custom-color-light-active),
+          var(--custom-color-light-focus),
+          var(--custom-color-light-hover)
+        );
+      }
+
+      @include theme('dark') {
+        @include link(
+          var(--custom-color-dark-text),
+          var(--custom-color-dark-hover),
+          var(--custom-color-dark-active),
+          var(--custom-color-dark-focus),
+          var(--custom-color-dark-hover)
+        );
+      }
+    }
+
+    &.disabled {
+      @include disabled {
+        color: theme-var(--components-buttons-link-primary-disabled);
+      }
+    }
+  }
+
+  &.loading {
+    cursor: progress;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &.isFetching {
+    @include skeleton(1px);
+  }
+}

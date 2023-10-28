@@ -1,0 +1,158 @@
+@import '../../styles/index.scss';
+
+.container {
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+  padding: 0.1em 0;
+  width: fit-content;
+  @include transition-1;
+  @include text-regular-14px;
+
+  &.primary {
+    color: theme-var(--primary-60);
+
+    &:visited {
+      color: theme-var(--primary-60);
+    }
+
+    &:hover {
+      color: var(--common-3);
+
+      &:after {
+        background-color: var(--common-3);
+      }
+    }
+
+    &:active {
+      color: var(--common-4);
+
+      &:after {
+        background-color: var(--common-4);
+      }
+    }
+  }
+
+  &.secondary {
+    color: theme-var(--text-50);
+
+    &:visited {
+      color: theme-var(--text-50);
+    }
+
+    &:hover {
+      color: theme-var(--text-100);
+
+      &:after {
+        background-color: theme-var(--text-100);
+      }
+    }
+
+    &:active {
+      color: theme-var(--text-100);
+
+      &:after {
+        background-color: theme-var(--text-100);
+      }
+    }
+  }
+
+  &.dark {
+    color: theme-var(--text-100);
+
+    &:visited {
+      color: theme-var(--text-100);
+    }
+
+    &:hover {
+      color: theme-var(--primary-60);
+
+      &:after {
+        background-color: theme-var(--primary-60);
+      }
+    }
+
+    &:active {
+      color: var(--common-3);
+
+      &:after {
+        background-color: var(--common-3);
+      }
+    }
+  }
+
+  &.light {
+    color: var(--common-1);
+
+    &:visited {
+      color: var(--common-1);
+    }
+
+    &:hover {
+      color: theme-var(--primary-60);
+
+      &:after {
+        background-color: theme-var(--primary-60);
+      }
+    }
+
+    &:active {
+      color: var(--common-3);
+
+      &:after {
+        background-color: var(--common-3);
+      }
+    }
+  }
+
+  &.grey {
+    color: var(--common-1);
+
+    &:visited {
+      color: var(--common-1);
+    }
+
+    &:hover {
+      color: theme-var(--primary-60);
+
+      &:after {
+        background-color: theme-var(--primary-60);
+      }
+    }
+
+    &:active {
+      color: var(--common-3);
+
+      &:after {
+        background-color: var(--common-3);
+      }
+    }
+  }
+
+  &.underline {
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0.1em;
+      transition: opacity 300ms, transform 300ms;
+      opacity: 0;
+      transform: translate3d(-50%, 0, 0);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      &:after {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+
+  &.isFetching {
+    @include skeleton();
+  }
+}

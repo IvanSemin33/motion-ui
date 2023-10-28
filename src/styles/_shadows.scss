@@ -1,0 +1,23 @@
+@mixin shadow-focus-primary {
+  box-shadow: 0 0 0 2px theme-var(--primary-20);
+}
+
+@mixin shadow-focus-secondary {
+  box-shadow: 0 0 0 2px theme-var(--grey-50);
+}
+
+@mixin shadow-focus-error {
+  box-shadow: 0 0 0 2px theme-var(--red-20);
+}
+
+@mixin shadow-focus-success {
+  box-shadow: 0 0 0 2px theme-var(--green-20);
+}
+
+@mixin shadow-focus-custom($color) {
+  box-shadow: 0 0 0 2px $color;
+}
+
+@mixin shadow-cards {
+  box-shadow: 2px 1px 15px rgba(0, 0, 0, 0.1);
+}

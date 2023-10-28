@@ -1,0 +1,44 @@
+@mixin scrollbar-base($width, $borderRadius) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: theme-var(--grey-50);
+    border-radius: $borderRadius;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: theme-var(--grey-70);
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+@mixin scrollbar-small {
+  @include scrollbar-base(6px, 3px);
+}
+
+@mixin scrollbar-medium {
+  @include scrollbar-base(10px, 5px);
+}
+
+@mixin scrollbar-large {
+  @include scrollbar-base(12px, 7px);
+}
+
+@mixin scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -1,0 +1,24 @@
+@import '../../styles/index.scss';
+
+.input {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  @include component-regular-16px;
+  color: theme-var(--text-100);
+  min-width: 0px;
+
+  &::placeholder {
+    color: theme-var(--text-40);
+  }
+
+  &.disabled {
+    &::placeholder {
+      color: theme-var(--text-30);
+    }
+    color: theme-var(--text-30);
+  }
+}

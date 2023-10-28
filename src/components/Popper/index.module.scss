@@ -1,0 +1,88 @@
+@import '../../styles/index.scss';
+
+@mixin arrow($position) {
+  &:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid theme-var(--body-70);
+    position: absolute;
+
+    @if $position == 'top' {
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%) rotate(180deg);
+    } @else if $position == 'top-left' {
+      bottom: -8px;
+      right: 20px;
+      transform: rotate(180deg);
+    } @else if $position == 'top-right' {
+      bottom: -8px;
+      left: 20px;
+      transform: rotate(180deg);
+    } @else if $position == 'bottom' {
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+    } @else if $position == 'bottom-left' {
+      top: -8px;
+      right: 20px;
+    } @else if $position == 'bottom-right' {
+      top: -8px;
+      left: 20px;
+    } @else if $position == 'left' {
+      top: 50%;
+      right: -8px;
+      transform: translateY(-50%) rotate(90deg);
+    } @else if $position == 'right' {
+      top: 50%;
+      left: -8px;
+      transform: translateY(-50%) rotate(-90deg);
+    }
+  }
+}
+
+.container {
+  background: theme-var(--body-70);
+  border-radius: 8px;
+
+  @include theme('light') {
+    filter: drop-shadow(2px 1px 15px rgba(0, 0, 0, 0.1));
+  }
+
+  &.arrow {
+    &.top {
+      @include arrow('top');
+    }
+
+    &.top-left {
+      @include arrow('top-left');
+    }
+
+    &.top-right {
+      @include arrow('top-right');
+    }
+
+    &.bottom {
+      @include arrow('bottom');
+    }
+
+    &.bottom-left {
+      @include arrow('bottom-left');
+    }
+
+    &.bottom-right {
+      @include arrow('bottom-right');
+    }
+
+    &.left {
+      @include arrow('left');
+    }
+
+    &.right {
+      @include arrow('right');
+    }
+  }
+}

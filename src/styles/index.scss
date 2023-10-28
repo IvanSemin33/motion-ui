@@ -1,0 +1,31 @@
+@import "variables";
+@import "mixins";
+@import "fonts";
+@import "shadows";
+@import "animations";
+@import "skeleton";
+@import "scrollbar";
+
+body {
+  transition: background-color 0.1s ease;
+
+  @include spread-map($common-map);
+
+  &.light {
+    @include spread-map($theme-map-light);
+    background-color: theme-var(--body-100);
+  }
+
+  &.dark {
+    @include spread-map($theme-map-dark);
+    background-color: theme-var(--body-100);
+  }
+}
+
+button {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}

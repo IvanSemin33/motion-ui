@@ -1,0 +1,40 @@
+@import '../../styles/index.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--common-7);
+
+  &.permanent {
+    width: 240px;
+    height: 100vh;
+  }
+
+  &.temporary {
+    position: fixed;
+
+    &.top {
+      width: 100vw;
+      top: 0;
+      left: 0;
+    }
+
+    &.bottom {
+      width: 100vw;
+      bottom: 0;
+      left: 0;
+    }
+
+    &.left {
+      height: 100vh;
+      top: 0;
+      left: 0;
+    }
+
+    &.right {
+      height: 100vh;
+      top: 0;
+      right: 0;
+    }
+  }
+}

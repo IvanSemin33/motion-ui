@@ -1,0 +1,34 @@
+@import '../../styles/index.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 12px;
+
+  .pageInput {
+    width: fit-content;
+
+    input {
+      min-width: 1ch;
+      width: 1ch;
+    }
+  }
+
+  .count {
+    @include component-regular-16px;
+    color: theme-var(--text-60);
+
+    span {
+      @include text-bold-16px;
+      color: theme-var(--text-100);
+    }
+  }
+
+  &.isFetching {
+    .count {
+      @include skeleton();
+    }
+  }
+}

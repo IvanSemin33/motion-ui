@@ -1,0 +1,108 @@
+@import '../../styles/index.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .upload {
+    position: relative;
+    height: fit-content;
+    width: 100%;
+    padding: 20px 32px 32px 32px;
+    background-color: theme-var(--primary-0);
+    border: 1px dashed theme-var(--primary-30);
+    border-radius: 8px;
+
+    .input {
+      display: none;
+    }
+
+    .label {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .icon {
+        width: 100px;
+        height: 100px;
+        color: theme-var(--primary-40);
+        margin-bottom: 12px;
+      }
+
+      &Text {
+        @include headline-h3;
+        color: theme-var(--text-100);
+        margin-bottom: 2px;
+      }
+
+      .description {
+        @include text-regular-14px;
+        color: theme-var(--text-70);
+        margin-bottom: 36px;
+      }
+    }
+
+    &.draging {
+      border-style: solid;
+    }
+
+    &.minimal {
+      width: 92px;
+      height: 150px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: unset;
+      border: 1px solid theme-var(--components-borders-20);
+      border-radius: 8px;
+
+      .label {
+        .icon,
+        .labelText,
+        .description {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.typeImage {
+    .files {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+  }
+
+  &.typeFile {
+    .files {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  &.disabled {
+    .upload {
+      background-color: theme-var(--grey-0);
+      border: 1px dashed theme-var(--grey-30);
+
+      .label {
+        cursor: not-allowed;
+
+        .icon {
+          color: theme-var(--grey-40);
+        }
+      }
+    }
+  }
+
+  &.isFetching {
+    @include skeleton(1px, 8px);
+  }
+}

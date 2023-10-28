@@ -1,0 +1,15 @@
+@import '../../styles/index.scss';
+
+.container {
+  padding: 8px 16px;
+  width: fit-content;
+  max-width: 450px;
+  color: theme-var(--text-100);
+
+  .title {
+    @include text-regular-14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

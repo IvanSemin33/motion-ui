@@ -1,0 +1,23 @@
+@import '../../styles/index.scss';
+
+.container {
+  display: flex;
+  align-items: flex-end;
+  width: fit-content;
+  @include text-regular-14px;
+
+  .ellipsis {
+    color: theme-var(--text-50);
+  }
+
+  .crumb {
+    .separator {
+      color: theme-var(--text-50);
+      margin: 0 8px;
+    }
+  }
+
+  &.isFetching {
+    @include skeleton();
+  }
+}

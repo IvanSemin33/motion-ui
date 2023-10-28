@@ -1,0 +1,119 @@
+@import '../../styles/index.scss';
+
+.container {
+  position: relative;
+  display: inline-block;
+
+  .badge {
+    border-radius: 10px;
+    @include component-regular-12px;
+    color: var(--common-1);
+    position: absolute;
+    @include transition-1;
+  }
+
+  &.hasContent {
+    .badge {
+      width: fit-content !important;
+      padding-left: 4px;
+      padding-right: 4px;
+      display: flex;
+      align-items: center;
+    }
+
+    &.big .badge {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+
+  &.border .badge {
+    outline: 0 solid var(--common-1);
+  }
+
+  &.secondary .badge {
+    background-color: theme-var(--grey-40);
+    box-shadow: 0px 0px 1px 1px theme-var(--grey-40);
+    animation: pulse-animation-secondary 2s infinite;
+  }
+
+  &.error .badge {
+    background-color: theme-var(--red-60);
+    box-shadow: 0px 0px 1px 1px theme-var(--red-60);
+    animation: pulse-animation-error 2s infinite;
+  }
+
+  &.success .badge {
+    background-color: theme-var(--green-60);
+    box-shadow: 0px 0px 1px 1px theme-var(--green-60);
+    animation: pulse-animation-success 2s infinite;
+  }
+
+  &:not(.animation) {
+    .badge {
+      animation: none;
+      box-shadow: none;
+    }
+  }
+
+  &.top-right .badge {
+    top: 0;
+    right: 0;
+    transform: scale(1) translate(50%, -50%);
+  }
+
+  &.top-left .badge {
+    top: 0;
+    left: 0;
+    transform: scale(1) translate(-50%, -50%);
+  }
+
+  &.bottom-right .badge {
+    bottom: 0;
+    right: 0;
+    transform: scale(1) translate(50%, 50%);
+  }
+
+  &.bottom-left .badge {
+    bottom: 0;
+    left: 0;
+    transform: scale(1) translate(-50%, 50%);
+  }
+
+  &.invisible .badge {
+    opacity: 0;
+  }
+
+  &.isFetching {
+    .badge {
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes pulse-animation-error {
+  0% {
+    box-shadow: 0 0 0 0px rgba(#f5222d, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(#f5222d, 0);
+  }
+}
+
+@keyframes pulse-animation-success {
+  0% {
+    box-shadow: 0 0 0 0px rgba(#52c41a, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(#52c41a, 0);
+  }
+}
+
+@keyframes pulse-animation-secondary {
+  0% {
+    box-shadow: 0 0 0 0px rgba(#d5d5d5, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(#d5d5d5, 0);
+  }
+}

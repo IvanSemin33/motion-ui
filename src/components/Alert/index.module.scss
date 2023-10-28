@@ -1,0 +1,82 @@
+@import '../../styles/index.scss';
+
+@mixin severity($border-color, $background-color, $icon-color) {
+  border-color: theme-var($border-color);
+  background-color: theme-var($background-color);
+
+  .iconWrapper {
+    background-color: theme-var($icon-color);
+
+    .icon {
+      fill: var(--common-1);
+    }
+  }
+}
+
+.container {
+  padding-left: 19px;
+  padding-right: 19px;
+  padding-top: 19px;
+  padding-bottom: 23px;
+  border: 1px solid;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+  .iconWrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .action {
+    margin-left: auto;
+  }
+
+  .close {
+    cursor: pointer;
+    position: absolute;
+    top: 19px;
+    right: 19px;
+    color: theme-var(--text-70);
+
+    &:hover {
+      color: theme-var(--text-100);
+    }
+  }
+
+  &.warning {
+    @include severity(--orange-20, --orange-0, --orange-60);
+  }
+
+  &.error {
+    @include severity(--red-20, --red-0, --red-60);
+  }
+
+  &.question {
+    @include severity(--purple-20, --purple-0, --purple-60);
+  }
+
+  &.info {
+    @include severity(--blue-20, --blue-0, --blue-60);
+  }
+
+  &.success {
+    @include severity(--green-20, --green-0, --green-60);
+  }
+
+  &.isFetching {
+    @include skeleton(1px, 8px);
+  }
+}

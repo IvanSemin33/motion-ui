@@ -1,0 +1,39 @@
+// map vars
+@mixin spread-map($map: ()) {
+  @each $key, $value in $map {
+    #{$key}: $value;
+  }
+}
+
+// get theme variable
+@function theme-var($key, $fallback: null, $map: $theme-map-light) {
+  @if not map-has-key($map, $key) {
+    @error "'#{$key}' is not a color key";
+  }
+  @if ($fallback) {
+    @return var($key, $fallback);
+  } @else {
+    @return var($key);
+  }
+}
+
+// aplly styles to theme
+@mixin theme($theme: 'light') {
+  @if $theme == 'light' {
+    body[class*='light'] & {
+      @content;
+    }
+  } @else {
+    body[class*='dark'] & {
+      @content;
+    }
+  }
+}
+
+// text ellipsis
+@mixin text-ellipsis($width: 100%) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: $width;
+}

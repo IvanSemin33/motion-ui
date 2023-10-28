@@ -1,0 +1,25 @@
+@import './index.scss';
+
+// Alert
+.alert {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  .title {
+    @include headline-h3;
+    color: theme-var(--text-100);
+  }
+
+  .description {
+    @include text-regular-14px;
+    color: theme-var(--text-60);
+  }
+}
+
+// Breadcrumbs
+.breadcrumbs {
+  .currentCrumb {
+    color: theme-var(--text-100);
+  }
+}

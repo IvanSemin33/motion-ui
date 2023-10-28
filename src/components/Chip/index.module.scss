@@ -1,0 +1,319 @@
+@import '../../styles/index.scss';
+
+.container {
+  border-radius: 4px;
+  border: 1px solid transparent;
+  width: fit-content;
+  @include transition-1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  .icon {
+    margin-right: 4px;
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  &.deletable {
+    .deleteIcon {
+      cursor: pointer;
+    }
+  }
+
+  &.small {
+    padding: 3px 7px;
+    @include component-regular-12px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .deleteIcon {
+      margin-left: 4px;
+    }
+  }
+
+  &.medium {
+    padding: 3px 11px;
+    @include component-regular-14px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .deleteIcon {
+      margin-left: 4px;
+    }
+  }
+
+  &.large {
+    padding: 7px 15px;
+    @include component-regular-14px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .deleteIcon {
+      margin-left: 8px;
+    }
+  }
+
+  &.filled {
+    &.primary {
+      background-color: theme-var(--primary-60);
+      color: var(--common-1);
+
+      &.clickable {
+        &:hover {
+          background-color: var(--common-3);
+        }
+
+        &:active {
+          background-color: var(--common-4);
+        }
+      }
+
+      &.disabled {
+        &.clickable {
+          background-color: theme-var(--grey-20);
+          color: theme-var(--text-50);
+
+          .icon {
+            fill: theme-var(--grey-70);
+          }
+        }
+
+        &.deletable .deleteIcon {
+          fill: theme-var(--grey-70);
+        }
+      }
+    }
+
+    &.secondary {
+      background-color: theme-var(--grey-20);
+      color: theme-var(--text-100);
+
+      .icon {
+        fill: theme-var(--grey-70);
+      }
+
+      &.clickable {
+        &:hover {
+          background-color: theme-var(--sexy-jupiter);
+        }
+
+        &:active {
+          background-color: var(--sexy-disco-ball);
+        }
+      }
+
+      &.deletable .deleteIcon {
+        fill: theme-var(--grey-70);
+
+        &:hover {
+          fill: theme-var(--text-100);
+        }
+
+        &:active {
+          fill: theme-var(--text-100);
+        }
+      }
+
+      &.disabled {
+        &.clickable {
+          background-color: theme-var(--grey-20);
+          color: theme-var(--text-50);
+        }
+
+        &.deletable .deleteIcon {
+          fill: theme-var(--grey-70);
+        }
+      }
+    }
+
+    &.dark {
+      background-color: theme-var(--sexy-goshawk-grey);
+      color: var(--common-1);
+
+      .icon {
+        fill: theme-var(--sexy-platinum);
+      }
+
+      &.clickable {
+        &:hover {
+          background-color: theme-var(--sexy-off-black);
+        }
+
+        &:active {
+          background-color: theme-var(--sexy-sooty);
+        }
+      }
+
+      &.deletable .deleteIcon {
+        fill: theme-var(--sexy-platinum);
+
+        &:hover {
+          fill: var(--common-1);
+        }
+
+        &:active {
+          fill: var(--common-1);
+        }
+      }
+
+      &.disabled {
+        &.clickable {
+          background-color: theme-var(--grey-20);
+          color: theme-var(--text-50);
+        }
+
+        &.deletable .deleteIcon {
+          fill: theme-var(--grey-70);
+        }
+      }
+    }
+  }
+
+  &.outlined {
+    &.primary {
+      background-color: transparent;
+      color: theme-var(--primary-60);
+      border-color: theme-var(--primary-60);
+
+      &.clickable {
+        &:hover {
+          background-color: theme-var(--sexy-everlasting-ice);
+        }
+
+        &:active {
+          background-color: theme-var(--sexy-melting-glacier);
+        }
+      }
+
+      &.disabled {
+        &.clickable {
+          border-color: theme-var(--components-borders-20);
+          background-color: theme-var(--grey-0);
+          color: theme-var(--text-50);
+
+          .icon {
+            fill: theme-var(--grey-70);
+          }
+        }
+
+        &.deletable .deleteIcon {
+          fill: theme-var(--grey-70);
+        }
+      }
+    }
+
+    &.secondary {
+      background-color: transparent;
+      color: theme-var(--text-100);
+      border-color: theme-var(--components-borders-20);
+
+      .icon {
+        fill: theme-var(--grey-70);
+      }
+
+      &.clickable {
+        &:hover {
+          background-color: theme-var(--grey-0);
+        }
+
+        &:active {
+          background-color: theme-var(--grey-10);
+        }
+      }
+
+      &.deletable .deleteIcon {
+        fill: theme-var(--grey-70);
+
+        &:hover {
+          fill: theme-var(--text-100);
+        }
+
+        &:active {
+          fill: theme-var(--text-100);
+        }
+      }
+
+      &.disabled {
+        &.clickable {
+          background-color: theme-var(--grey-0);
+          color: theme-var(--text-50);
+        }
+
+        &.deletable .deleteIcon {
+          fill: theme-var(--grey-70);
+        }
+      }
+    }
+
+    &.dark {
+      background-color: transparent;
+      color: theme-var(--text-100);
+      border-color: theme-var(--sexy-goshawk-grey);
+
+      .icon {
+        fill: theme-var(--grey-70);
+      }
+
+      &.clickable {
+        &:hover {
+          background-color: theme-var(--grey-10);
+        }
+
+        &:active {
+          background-color: theme-var(--grey-30);
+        }
+      }
+
+      &.deletable .deleteIcon {
+        fill: theme-var(--grey-70);
+
+        &:hover {
+          fill: theme-var(--text-100);
+        }
+
+        &:active {
+          fill: theme-var(--sexy-goshawk-grey);
+        }
+      }
+
+      &.disabled {
+        &.clickable {
+          border-color: theme-var(--components-borders-20);
+          background-color: theme-var(--grey-0);
+          color: theme-var(--text-50);
+        }
+
+        &.deletable .deleteIcon {
+          fill: theme-var(--grey-70);
+        }
+      }
+    }
+  }
+
+  &.disabled {
+    &.clickable {
+      cursor: not-allowed;
+    }
+
+    &.deletable .deleteIcon {
+      cursor: not-allowed;
+    }
+  }
+
+  &.isFetching {
+    @include skeleton(1px);
+  }
+}

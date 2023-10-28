@@ -1,0 +1,25 @@
+@keyframes skeleton-animation {
+  0% {
+    background-color: theme-var(--sexy-coronation);
+  }
+  100% {
+    background-color: theme-var(--sexy-disco-ball);
+  }
+}
+
+@mixin skeleton($borderWidth: 0px, $borderRadius: 4px) {
+  position: relative !important;
+  cursor: wait !important;
+  // pointer-events: none;
+
+  &::after {
+    content: '' !important;
+    position: absolute !important;
+    top: -#{$borderWidth} !important;
+    left: -#{$borderWidth} !important;
+    width: calc(100% + #{$borderWidth} * 2) !important;
+    height: calc(100% + #{$borderWidth} * 2) !important;
+    border-radius: $borderRadius !important;
+    animation: skeleton-animation 1s ease-in-out infinite alternate !important;
+  }
+}

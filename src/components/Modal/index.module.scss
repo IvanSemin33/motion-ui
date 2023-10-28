@@ -1,0 +1,29 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(4.3px);
+    -webkit-backdrop-filter: blur(4.3px);
+
+    &.invisible {
+      background: transparent;
+      backdrop-filter: unset;
+      -webkit-backdrop-filter: unset;
+    }
+  }
+}

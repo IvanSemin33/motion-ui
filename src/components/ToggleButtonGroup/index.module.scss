@@ -1,0 +1,23 @@
+@import '../../styles/index.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: fit-content;
+
+  .label {
+    @include text-bold-12px;
+    color: theme-var(--text-60);
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px;
+    border-radius: 4px;
+    background-color: theme-var(--sexy-coronation);
+    gap: 2px;
+    width: fit-content;
+  }
+}

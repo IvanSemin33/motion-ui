@@ -1,0 +1,251 @@
+@import '../../styles/index.scss';
+
+.container {
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: fit-content;
+  @include transition-1;
+
+  .label {
+    color: theme-var(--text-100);
+    width: fit-content;
+  }
+
+  .input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    border: 1px solid transparent;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+  }
+
+  &.square {
+    .checkmark {
+      border-radius: 4px;
+    }
+  }
+
+  &.circle {
+    .checkmark {
+      border-radius: 50%;
+    }
+  }
+
+  &.small {
+    .label {
+      @include text-regular-12px;
+      margin-left: 8px;
+    }
+
+    .checkmark {
+      width: 16px;
+      height: 16px;
+
+      > svg {
+        height: 12px;
+        width: 12px;
+      }
+    }
+  }
+
+  &.medium {
+    .label {
+      @include text-regular-14px;
+      margin-left: 8px;
+    }
+
+    .checkmark {
+      width: 20px;
+      height: 20px;
+
+      > svg {
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
+
+  &.large {
+    .label {
+      @include text-regular-16px;
+      margin-left: 12px;
+    }
+
+    .checkmark {
+      width: 24px;
+      height: 24px;
+
+      > svg {
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
+
+  &.standard {
+    .checkmark {
+      border-color: theme-var(--components-borders-20);
+    }
+
+    &:hover .checkmark {
+      border-color: theme-var(--primary-60);
+    }
+
+    &:focus-visible .checkmark {
+      background-color: transparent;
+      @include shadow-focus-primary;
+    }
+
+    &.checked .checkmark {
+      background-color: transparent;
+      color: theme-var(--primary-60);
+    }
+
+    &.small .checkmark > svg {
+      height: 12px;
+      width: 12px;
+    }
+
+    &.medium .checkmark > svg {
+      height: 16px;
+      width: 16px;
+    }
+
+    &.large .checkmark > svg {
+      height: 18px;
+      width: 18px;
+    }
+
+    &.disabled {
+      .checkmark {
+        background-color: theme-var(--grey-0);
+        border-color: theme-var(--components-borders-20);
+      }
+
+      &.checked {
+        .checkmark {
+          background-color: transparent;
+          border-color: theme-var(--components-borders-20);
+          color: theme-var(--components-borders-20);
+        }
+      }
+    }
+  }
+
+  &.outlined {
+    .checkmark {
+      border-color: theme-var(--components-borders-20);
+    }
+
+    &:hover .checkmark {
+      border-color: theme-var(--primary-60);
+    }
+
+    &:focus-visible .checkmark {
+      background-color: theme-var(--body-90);
+      @include shadow-focus-primary;
+    }
+
+    &.checked .checkmark {
+      background-color: theme-var(--primary-60);
+      color: var(--common-1);
+    }
+
+    &.disabled {
+      .checkmark {
+        background-color: theme-var(--grey-0);
+        border-color: theme-var(--components-borders-20);
+      }
+
+      &.checked {
+        .checkmark {
+          background-color: transparent;
+          border-color: theme-var(--components-borders-20);
+          color: theme-var(--components-borders-20);
+        }
+      }
+    }
+  }
+
+  &.filled {
+    .checkmark {
+      border-color: theme-var(--grey-20);
+      background-color: theme-var(--grey-20);
+    }
+
+    &:hover .checkmark {
+      border-color: theme-var(--primary-60);
+    }
+
+    &:focus-visible .checkmark {
+      background-color: theme-var(--grey-20);
+      @include shadow-focus-primary;
+    }
+
+    &.checked .checkmark {
+      background-color: theme-var(--primary-60);
+      color: var(--common-1);
+    }
+
+    &.disabled {
+      .checkmark {
+        background-color: theme-var(--grey-10);
+        border-color: theme-var(--grey-10);
+      }
+
+      &.checked {
+        .checkmark {
+          background-color: theme-var(--grey-20);
+          border-color: theme-var(--grey-20);
+          color: theme-var(--text-30);
+        }
+      }
+    }
+  }
+
+  &.checked .checkmark {
+    border-color: theme-var(--primary-60);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    &.checked {
+      .label {
+        color: theme-var(--text-100);
+      }
+    }
+
+    .label {
+      color: theme-var(--text-40);
+    }
+  }
+
+  &.isFetching {
+    &.circle .checkmark {
+      @include skeleton(1px, 50%);
+    }
+
+    &.square .checkmark {
+      @include skeleton(1px);
+    }
+
+    .label {
+      @include skeleton();
+    }
+  }
+}

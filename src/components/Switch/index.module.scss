@@ -1,0 +1,156 @@
+@import '../../styles/index.scss';
+
+@mixin size(
+  $width,
+  $height,
+  $handle-size,
+  $handle-position,
+  $icon-size,
+  $back-icon-vertical-position,
+  $back-icon-horizontal-position
+) {
+  width: $width;
+  height: $height;
+
+  .handle {
+    width: $handle-size;
+    height: $handle-size;
+    top: $handle-position;
+    left: $handle-position;
+    border-radius: $handle-size;
+  }
+
+  &.checked {
+    .handle {
+      left: calc(100% - $handle-size - $handle-position);
+    }
+
+    .back {
+      left: $back-icon-horizontal-position;
+    }
+  }
+
+  &:not(.disabled) {
+    .input:active ~ .handle {
+      width: calc($handle-size * 1.5);
+    }
+
+    &.checked .input:active ~ .handle {
+      margin-left: calc($handle-size * -0.5);
+    }
+  }
+
+  .icon,
+  .backIcon {
+    width: $icon-size;
+    height: $icon-size;
+  }
+
+  .back {
+    width: $icon-size;
+    height: $icon-size;
+    top: $back-icon-vertical-position;
+    left: calc(100% - $icon-size - $back-icon-horizontal-position);
+  }
+}
+
+.container {
+  background-color: theme-var(--sexy-coronation);
+  border-radius: 30px;
+  box-shadow: inset 2px 1px 4px -1px rgba(0, 0, 0, 0.15);
+  position: relative;
+  @include transition-1;
+
+  .input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+
+  .handle {
+    position: absolute;
+    background-color: var(--common-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+  }
+
+  .icon {
+    fill: theme-var(--grey-90);
+  }
+
+  .back {
+    position: absolute;
+    transition: left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+
+    .backIcon {
+      fill: var(--common-1);
+    }
+  }
+
+  &.small {
+    @include size(40px, 20px, 16px, 2px, 12px, 4px, 6px);
+  }
+
+  &.medium {
+    @include size(48px, 24px, 20px, 2px, 16px, 4px, 6px);
+  }
+
+  &.large {
+    @include size(60px, 32px, 26px, 3px, 20px, 6px, 6px);
+  }
+
+  &.checked {
+    background-color: theme-var(--primary-60);
+
+    .icon {
+      fill: theme-var(--primary-60);
+    }
+
+    .backIcon {
+      fill: var(--common-2);
+    }
+  }
+
+  &.disabled {
+    background-color: theme-var(--sexy-coronation);
+    box-shadow: unset;
+
+    .input {
+      cursor: not-allowed;
+    }
+
+    .icon {
+      fill: theme-var(--grey-50);
+    }
+
+    .backIcon {
+      fill: theme-var(--sexy-doctor);
+    }
+
+    &.checked {
+      background-color: theme-var(--sexy-spring-morning);
+
+      .icon {
+        fill: theme-var(--sexy-spring-morning);
+      }
+
+      .backIcon {
+        fill: var(--common-1);
+      }
+    }
+  }
+
+  &.isFetching {
+    @include skeleton(0px, 30px);
+  }
+}

@@ -1,0 +1,212 @@
+@import '../../styles/index.scss';
+
+.container {
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  width: fit-content;
+  min-width: fit-content;
+  user-select: none;
+
+  @include transition-1;
+
+  .label {
+    color: theme-var(--text-100);
+    width: fit-content;
+  }
+
+  .input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--common-1);
+  }
+
+  &.small {
+    .label {
+      @include text-regular-12px;
+      margin-left: 8px;
+    }
+
+    .checkmark {
+      width: 16px;
+      height: 16px;
+
+      > svg {
+        height: 12px;
+        width: 12px;
+      }
+    }
+  }
+
+  &.medium {
+    .label {
+      @include text-regular-14px;
+      margin-left: 8px;
+    }
+
+    .checkmark {
+      width: 20px;
+      height: 20px;
+
+      > svg {
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
+
+  &.large {
+    .label {
+      @include text-regular-16px;
+      margin-left: 12px;
+    }
+
+    .checkmark {
+      width: 24px;
+      height: 24px;
+
+      > svg {
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
+
+  &.outlined {
+    .checkmark {
+      border-color: theme-var(--components-borders-20);
+    }
+
+    &:hover .checkmark {
+      border-color: theme-var(--primary-60);
+    }
+
+    &:focus-visible .checkmark {
+      background-color: transparent;
+      @include shadow-focus-primary;
+    }
+
+    &.disabled {
+      .checkmark {
+        background-color: theme-var(--grey-0);
+        border-color: theme-var(--components-borders-20);
+      }
+
+      &.checked {
+        .checkmark {
+          background-color: transparent;
+          border-color: theme-var(--components-borders-20);
+          color: theme-var(--components-borders-20);
+        }
+      }
+
+      &.indeterminate {
+        .checkmark {
+          background-color: transparent;
+          border-color: theme-var(--components-borders-20);
+          color: theme-var(--components-borders-20);
+        }
+      }
+    }
+  }
+
+  &.filled {
+    .checkmark {
+      border-color: theme-var(--grey-20);
+      background-color: theme-var(--grey-20);
+    }
+
+    &:hover .checkmark {
+      border-color: theme-var(--primary-60);
+    }
+
+    &:focus-visible .checkmark {
+      background-color: theme-var(--grey-20);
+      @include shadow-focus-primary;
+    }
+
+    &.disabled {
+      .checkmark {
+        background-color: theme-var(--grey-10);
+        border-color: theme-var(--grey-10);
+      }
+
+      &.checked {
+        .checkmark {
+          background-color: theme-var(--grey-20);
+          border-color: theme-var(--grey-20);
+          color: theme-var(--text-30);
+        }
+      }
+
+      &.indeterminate {
+        .checkmark {
+          background-color: theme-var(--grey-20);
+          border-color: theme-var(--grey-20);
+          color: theme-var(--text-30);
+        }
+      }
+    }
+  }
+
+  &.checked {
+    .checkmark {
+      background-color: theme-var(--primary-60);
+      border-color: theme-var(--primary-60);
+      color: var(--common-1);
+    }
+  }
+
+  &.indeterminate {
+    .checkmark {
+      background-color: theme-var(--primary-60);
+      border-color: theme-var(--primary-60);
+      color: var(--common-1);
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    &.checked {
+      .label {
+        color: theme-var(--text-100);
+      }
+    }
+
+    &.indeterminate {
+      .label {
+        color: theme-var(--text-100);
+      }
+    }
+
+    .label {
+      color: theme-var(--text-40);
+    }
+  }
+
+  &.isFetching {
+    .checkmark {
+      @include skeleton(1px);
+    }
+
+    .label {
+      @include skeleton();
+    }
+  }
+}

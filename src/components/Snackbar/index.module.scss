@@ -1,0 +1,135 @@
+@import '../../styles/index.scss';
+
+@mixin severity($border-color, $background-color, $icon-color) {
+  border-color: theme-var($border-color);
+  background-color: theme-var($background-color);
+
+  .iconWrapper {
+    background-color: theme-var($icon-color);
+
+    .icon {
+      fill: var(--common-1);
+    }
+
+    &:before {
+      background-color: theme-var($icon-color);
+    }
+  }
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border: 1px solid;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  min-width: 320px;
+  max-width: 600px;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.15);
+
+  &.temporary {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .iconWrapper {
+    position: relative;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    flex: 0 0 32px;
+
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: auto;
+      right: -4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      background-color: transparent;
+      transform: rotate(45deg);
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+
+    .title {
+      @include text-bold-14px;
+      color: theme-var(--text-100);
+    }
+
+    .description {
+      @include text-regular-14px;
+      color: theme-var(--text-60);
+    }
+  }
+
+  .action {
+    margin-left: auto;
+  }
+
+  .close {
+    height: 20px;
+    cursor: pointer;
+    color: theme-var(--text-70);
+    margin-left: auto;
+    flex: 0 0 20px;
+
+    &:hover {
+      color: theme-var(--text-100);
+    }
+  }
+
+  &:has(.action, .close) {
+    .content {
+      margin-right: 24px;
+    }
+  }
+
+  &:has(.action) {
+    .close {
+      margin-left: 16px;
+    }
+  }
+
+  &.default {
+    @include severity(--body-50, --body-50, --body-50);
+  }
+
+  &.warning {
+    @include severity(--orange-20, --orange-0, --orange-60);
+  }
+
+  &.error {
+    @include severity(--red-20, --red-0, --red-60);
+  }
+
+  &.question {
+    @include severity(--purple-20, --purple-0, --purple-60);
+  }
+
+  &.info {
+    @include severity(--blue-20, --blue-0, --blue-60);
+  }
+
+  &.success {
+    @include severity(--green-20, --green-0, --green-60);
+  }
+}
