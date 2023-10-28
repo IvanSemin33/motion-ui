@@ -5,12 +5,9 @@
   "type": "module",
   "homepage": "http://IvanSemin33.github.io/motion-ui",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "storybook dev -p 6006",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build": "storybook build",
     "predeploy": "npm run build-storybook",
     "deploy-storybook": "gh-pages -d storybook-static"
   },
