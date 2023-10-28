@@ -1,0 +1,2 @@
+import{r as c}from"./index-76fb7be0.js";import{o as m,a as i}from"./util-051783c3.js";var v=["mousedown","touchstart"],h=function(f,t,a){a===void 0&&(a=v);var n=c.useRef(t);c.useEffect(function(){n.current=t},[t]),c.useEffect(function(){for(var e=function(r){var o=f.current;o&&!o.contains(r.target)&&n.current(r)},u=0,s=a;u<s.length;u++){var d=s[u];m(document,d,e)}return function(){for(var r=0,o=a;r<o.length;r++){var l=o[r];i(document,l,e)}}},[a,f])};const g=h;export{g as u};
+//# sourceMappingURL=useClickAway-c1f5d28f.js.map
